@@ -3,123 +3,40 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SensorGrid Monitoring</title>
+    <title>SensorGrid</title>
     <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <header class="top-nav">
-        <h1>SensorGrid</h1>
-        <div class="status-badge online">System Online</div>
+    <header>
+        <h1>SensorGrid Monitoring</h1>
     </header>
 
     <div class="grid-container">
-        <!-- Sidebar / Alerts -->
-        <aside class="alerts-section section-box">
-            <h2>Alerts</h2>
-            <ul class="alert-list">
-                <li class="alert-item critical">
-                    <span class="icon">⚠️</span>
-                    <div class="alert-content">
-                        <strong>High Temperature</strong>
-                        <p>Sensor Alpha is exceeding 45°C.</p>
-                    </div>
-                </li>
-                <li class="alert-item warning">
-                    <span class="icon">⚡</span>
-                    <div class="alert-content">
-                        <strong>Low Battery</strong>
-                        <p>Sensor Gamma at 15%</p>
-                    </div>
-                </li>
-            </ul>
-        </aside>
+        <section class="dashboard">
+            <h2>Dashboard</h2>
+            <p>Active Sensors: 3</p>
+            <p>System Status: OK</p>
+        </section>
 
-        <!-- Dashboard (Main Content) -->
-        <main class="dashboard-section section-box">
-            <h2>Dashboard Overview</h2>
-            <div class="dashboard-stats">
-                <div class="stat-card">
-                    <h3>Active Sensors</h3>
-                    <p class="stat-value">24</p>
-                </div>
-                <div class="stat-card">
-                    <h3>Avg. Latency</h3>
-                    <p class="stat-value">12 ms</p>
-                </div>
-                <div class="stat-card">
-                    <h3>Data Rate</h3>
-                    <p class="stat-value">1.2 MB/s</p>
-                </div>
-            </div>
-        </main>
-
-        <!-- Sensors Section -->
-        <section class="sensors-section section-box">
-            <h2>Sensor Status</h2>
-            <div class="sensors-grid">
-                <div class="sensor-card online">
-                    <div class="sensor-header">
-                        <h3>Sensor Alpha</h3>
-                        <span class="badge">ONLINE</span>
-                    </div>
-                    <div class="sensor-body">
-                        <p>Temp: 22°C</p>
-                        <p>Humidity: 45%</p>
-                    </div>
-                </div>
-
-                <div class="sensor-card offline">
-                    <div class="sensor-header">
-                        <h3>Sensor Beta</h3>
-                        <span class="badge">OFFLINE</span>
-                    </div>
-                    <div class="sensor-body">
-                        <p>Last seen: 2 hrs ago</p>
-                    </div>
-                </div>
-
-                <div class="sensor-card alert">
-                    <div class="sensor-header">
-                        <h3>Sensor Gamma</h3>
-                        <span class="badge">ALERT</span>
-                    </div>
-                    <div class="sensor-body">
-                        <p>Temp: 48°C (High)</p>
-                        <p>Humidity: 50%</p>
-                    </div>
-                </div>
-                
-                <div class="sensor-card online">
-                    <div class="sensor-header">
-                        <h3>Sensor Delta</h3>
-                        <span class="badge">ONLINE</span>
-                    </div>
-                    <div class="sensor-body">
-                        <p>Temp: 24°C</p>
-                        <p>Humidity: 42%</p>
-                    </div>
-                </div>
+        <section class="sensors">
+            <h2>Sensors</h2>
+            <div class="sensor-list">
+                <div class="sensor online">Sensor 1 (ONLINE)</div>
+                <div class="sensor offline">Sensor 2 (OFFLINE)</div>
+                <div class="sensor alert">Sensor 3 (ALERT)</div>
             </div>
         </section>
 
-        <!-- Analytics Section -->
-        <section class="analytics-section section-box">
+        <section class="analytics">
             <h2>Analytics</h2>
-            <div class="analytics-content">
-                <div class="chart-placeholder">
-                    <p>[ Real-time Chart Visualization ]</p>
-                    <div class="mock-bar-chart">
-                        <div class="bar" style="height: 40%"></div>
-                        <div class="bar" style="height: 60%"></div>
-                        <div class="bar" style="height: 80%"></div>
-                        <div class="bar" style="height: 30%"></div>
-                        <div class="bar" style="height: 50%"></div>
-                        <div class="bar alert-bar" style="height: 95%"></div>
-                        <div class="bar" style="height: 45%"></div>
-                    </div>
-                </div>
-            </div>
+            <p>Average Temperature: 24°C</p>
+        </section>
+
+        <section class="alerts">
+            <h2>Alerts</h2>
+            <ul>
+                <li>Warning: Sensor 3 high temp!</li>
+            </ul>
         </section>
     </div>
 </body>

@@ -1,245 +1,64 @@
-:root {
-    --bg-color: #0f172a;
-    --panel-bg: #1e293b;
-    --text-primary: #f8fafc;
-    --text-secondary: #94a3b8;
-    --accent: #3b82f6;
-    
-    /* Status Colors */
-    --status-online: #10b981; /* Green */
-    --status-offline: #64748b; /* Gray */
-    --status-alert: #ef4444;   /* Red */
-    --status-warning: #f59e0b; /* Yellow */
-}
-
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-}
-
 body {
-    font-family: 'Inter', sans-serif;
-    background-color: var(--bg-color);
-    color: var(--text-primary);
+    font-family: Arial, sans-serif;
+    margin: 0;
     padding: 20px;
+    background: #f4f4f4;
 }
 
-/* Header */
-.top-nav {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px 20px;
-    background-color: var(--panel-bg);
-    border-radius: 12px;
+header {
+    text-align: center;
     margin-bottom: 20px;
-    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
 }
 
-.status-badge {
-    padding: 6px 12px;
-    border-radius: 999px;
-    font-size: 0.875rem;
-    font-weight: 600;
-}
-
-.status-badge.online {
-    background-color: rgba(16, 185, 129, 0.2);
-    color: var(--status-online);
-}
-
-/* Layout Grid */
+/* Grid Layout */
 .grid-container {
     display: grid;
-    grid-template-columns: 250px 1fr;
-    grid-template-rows: auto auto auto;
+    grid-template-columns: 1fr 1fr;
     gap: 20px;
-    grid-template-areas: 
-        "alerts dashboard"
-        "alerts sensors"
-        "alerts analytics";
 }
 
-@media (max-width: 900px) {
+@media (max-width: 600px) {
     .grid-container {
         grid-template-columns: 1fr;
-        grid-template-areas: 
-            "dashboard"
-            "sensors"
-            "analytics"
-            "alerts";
     }
 }
 
-.section-box {
-    background-color: var(--panel-bg);
-    padding: 20px;
-    border-radius: 12px;
-    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-}
-
-.section-box h2 {
-    margin-bottom: 15px;
-    font-size: 1.25rem;
-    color: var(--text-primary);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-    padding-bottom: 10px;
-}
-
-
-.dashboard-section { grid-area: dashboard; }
-.dashboard-stats {
-    display: flex;
-    gap: 20px;
-    flex-wrap: wrap;
-}
-
-.stat-card {
-    flex: 1;
-    min-width: 150px;
-    background-color: rgba(255, 255, 255, 0.05);
+section {
+    background: white;
     padding: 15px;
-    border-radius: 8px;
-    text-align: center;
+    border: 1px solid #ddd;
+    border-radius: 5px;
 }
 
-.stat-card h3 {
-    font-size: 0.9rem;
-    color: var(--text-secondary);
-    margin-bottom: 5px;
-}
-
-.stat-card .stat-value {
-    font-size: 1.8rem;
-    font-weight: 700;
-}
-
-/* Sensors */
-.sensors-section { grid-area: sensors; }
-.sensors-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    gap: 15px;
-}
-
-.sensor-card {
-    background-color: rgba(255, 255, 255, 0.05);
-    border-radius: 8px;
-    padding: 15px;
-    border-left: 4px solid transparent;
-    transition: transform 0.2s ease;
-}
-
-.sensor-card:hover {
-    transform: translateY(-2px);
-}
-
-.sensor-header {
+/* Flexbox for Sensors */
+.sensor-list {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 10px;
+    flex-direction: column;
+    gap: 10px;
 }
 
-.sensor-header h3 {
-    font-size: 1rem;
-}
-
-.sensor-card .badge {
-    font-size: 0.75rem;
-    padding: 3px 8px;
+.sensor {
+    padding: 10px;
+    border: 2px solid;
     border-radius: 4px;
-    font-weight: 600;
-}
-
-.sensor-body p {
-    font-size: 0.9rem;
-    color: var(--text-secondary);
-    margin-bottom: 4px;
+    font-weight: bold;
 }
 
 /* Visual States */
-.sensor-card.online { border-left-color: var(--status-online); }
-.sensor-card.online .badge { background-color: rgba(16, 185, 129, 0.2); color: var(--status-online); }
-
-.sensor-card.offline { border-left-color: var(--status-offline); opacity: 0.7; }
-.sensor-card.offline .badge { background-color: rgba(100, 116, 139, 0.2); color: var(--status-offline); }
-
-.sensor-card.alert { 
-    border-left-color: var(--status-alert); 
-    animation: pulse-border 2s infinite;
-}
-.sensor-card.alert .badge { background-color: rgba(239, 68, 68, 0.2); color: var(--status-alert); }
-
-@keyframes pulse-border {
-    0% { box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.4); }
-    70% { box-shadow: 0 0 0 6px rgba(239, 68, 68, 0); }
-    100% { box-shadow: 0 0 0 0 rgba(239, 68, 68, 0); }
+.online {
+    background-color: #d4edda;
+    border-color: #28a745;
+    color: #155724;
 }
 
-/* Alerts */
-.alerts-section { grid-area: alerts; }
-.alert-list {
-    list-style: none;
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
+.offline {
+    background-color: #e2e3e5;
+    border-color: #6c757d;
+    color: #383d41;
 }
 
-.alert-item {
-    display: flex;
-    align-items: flex-start;
-    gap: 12px;
-    padding: 12px;
-    background-color: rgba(255, 255, 255, 0.05);
-    border-radius: 8px;
-}
-
-.alert-item.critical { border-left: 3px solid var(--status-alert); }
-.alert-item.warning { border-left: 3px solid var(--status-warning); }
-
-.alert-content strong {
-    display: block;
-    font-size: 0.95rem;
-    margin-bottom: 4px;
-}
-
-.alert-content p {
-    font-size: 0.85rem;
-    color: var(--text-secondary);
-}
-
-/* Analytics */
-.analytics-section { grid-area: analytics; }
-.chart-placeholder {
-    height: 200px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    background-color: rgba(255, 255, 255, 0.02);
-    border: 1px dashed rgba(255, 255, 255, 0.1);
-    border-radius: 8px;
-    color: var(--text-secondary);
-}
-
-.mock-bar-chart {
-    display: flex;
-    align-items: flex-end;
-    gap: 10px;
-    height: 100px;
-    margin-top: 20px;
-    width: 80%;
-    justify-content: center;
-}
-
-.mock-bar-chart .bar {
-    width: 20px;
-    background-color: var(--accent);
-    border-radius: 4px 4px 0 0;
-}
-
-.mock-bar-chart .alert-bar {
-    background-color: var(--status-alert);
+.alert {
+    background-color: #f8d7da;
+    border-color: #dc3545;
+    color: #721c24;
 }
