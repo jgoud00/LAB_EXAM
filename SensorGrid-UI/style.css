@@ -1,64 +1,166 @@
-body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 20px;
-    background: #f4f4f4;
+:root {
+    --bg-color: #f0f2f5;
+    --card-bg: #ffffff;
+    --text-main: #333333;
+    --text-muted: #666666;
+    --border-color: #e4e6eb;
+    
+    --online: #28a745;
+    --offline: #6c757d;
+    --alert: #dc3545;
 }
 
-header {
-    text-align: center;
-    margin-bottom: 20px;
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-main);
+    margin: 0;
+    padding: 0;
+}
+
+.navbar {
+    background-color: var(--card-bg);
+    padding: 15px 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+.navbar h1 {
+    margin: 0;
+    font-size: 1.5rem;
+    color: #1a73e8;
+}
+
+.status-ok {
+    background-color: #e6f4ea;
+    color: #1e8e3e;
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-weight: 600;
+    font-size: 0.9rem;
 }
 
 /* Grid Layout */
-.grid-container {
+.grid-layout {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: repeat(2, 1fr);
     gap: 20px;
+    padding: 30px;
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
-@media (max-width: 600px) {
-    .grid-container {
+@media (max-width: 768px) {
+    .grid-layout {
         grid-template-columns: 1fr;
     }
 }
 
-section {
-    background: white;
-    padding: 15px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
+/* Cards */
+.card {
+    background-color: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
 }
 
-/* Flexbox for Sensors */
+.card h2 {
+    margin-top: 0;
+    font-size: 1.2rem;
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 10px;
+    margin-bottom: 15px;
+}
+
+/* Dashboard Stats */
+.stats {
+    display: flex;
+    gap: 20px;
+}
+
+.stat-box {
+    flex: 1;
+    background-color: var(--bg-color);
+    padding: 15px;
+    border-radius: 6px;
+    text-align: center;
+}
+
+.stat-box h3 {
+    margin: 0 0 10px 0;
+    font-size: 0.9rem;
+    color: var(--text-muted);
+}
+
+.stat-box .number {
+    margin: 0;
+    font-size: 1.8rem;
+    font-weight: 600;
+}
+
+/* Sensors List */
 .sensor-list {
     display: flex;
     flex-direction: column;
     gap: 10px;
 }
 
-.sensor {
-    padding: 10px;
-    border: 2px solid;
+.sensor-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 15px;
+    border-radius: 6px;
+    border-left: 4px solid transparent;
+    background-color: var(--bg-color);
+}
+
+.sensor-name {
+    font-weight: 600;
+}
+
+.badge {
+    padding: 4px 8px;
     border-radius: 4px;
-    font-weight: bold;
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: white;
 }
 
-/* Visual States */
-.online {
-    background-color: #d4edda;
-    border-color: #28a745;
-    color: #155724;
+.sensor-item.online { border-left-color: var(--online); }
+.sensor-item.online .badge { background-color: var(--online); }
+
+.sensor-item.offline { border-left-color: var(--offline); }
+.sensor-item.offline .badge { background-color: var(--offline); }
+
+.sensor-item.alert { border-left-color: var(--alert); }
+.sensor-item.alert .badge { background-color: var(--alert); }
+
+/* Alerts & Analytics */
+.alert-list {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
 }
 
-.offline {
-    background-color: #e2e3e5;
-    border-color: #6c757d;
-    color: #383d41;
+.alert-item {
+    padding: 10px 0;
+    border-bottom: 1px solid var(--border-color);
+    color: var(--text-muted);
 }
 
-.alert {
-    background-color: #f8d7da;
-    border-color: #dc3545;
-    color: #721c24;
+.alert-item:last-child {
+    border-bottom: none;
+}
+
+.alert-item strong {
+    color: var(--alert);
+}
+
+.analytics-content p {
+    color: var(--text-muted);
+    line-height: 1.5;
 }

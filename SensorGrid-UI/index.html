@@ -3,41 +3,67 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SensorGrid</title>
+    <title>SensorGrid Dashboard</title>
     <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Segoe+UI:wght@400;600&display=swap" rel="stylesheet">
 </head>
 <body>
-    <header>
-        <h1>SensorGrid Monitoring</h1>
+    <header class="navbar">
+        <h1>SensorGrid Dashboard</h1>
+        <span class="status-ok">System OK</span>
     </header>
 
-    <div class="grid-container">
-        <section class="dashboard">
-            <h2>Dashboard</h2>
-            <p>Active Sensors: 3</p>
-            <p>System Status: OK</p>
-        </section>
-
-        <section class="sensors">
-            <h2>Sensors</h2>
-            <div class="sensor-list">
-                <div class="sensor online">Sensor 1 (ONLINE)</div>
-                <div class="sensor offline">Sensor 2 (OFFLINE)</div>
-                <div class="sensor alert">Sensor 3 (ALERT)</div>
+    <main class="grid-layout">
+        <!-- Dashboard Overview -->
+        <section class="card dashboard-card">
+            <h2>Overview</h2>
+            <div class="stats">
+                <div class="stat-box">
+                    <h3>Active Sensors</h3>
+                    <p class="number">3</p>
+                </div>
+                <div class="stat-box">
+                    <h3>Avg Temp</h3>
+                    <p class="number">24°C</p>
+                </div>
             </div>
         </section>
 
-        <section class="analytics">
-            <h2>Analytics</h2>
-            <p>Average Temperature: 24°C</p>
+        <!-- Sensors List -->
+        <section class="card sensors-card">
+            <h2>Sensors</h2>
+            <div class="sensor-list">
+                <div class="sensor-item online">
+                    <span class="sensor-name">Sensor 1 (Main Hall)</span>
+                    <span class="badge">ONLINE</span>
+                </div>
+                <div class="sensor-item offline">
+                    <span class="sensor-name">Sensor 2 (Basement)</span>
+                    <span class="badge">OFFLINE</span>
+                </div>
+                <div class="sensor-item alert">
+                    <span class="sensor-name">Sensor 3 (Server Room)</span>
+                    <span class="badge">ALERT</span>
+                </div>
+            </div>
         </section>
 
-        <section class="alerts">
-            <h2>Alerts</h2>
-            <ul>
-                <li>Warning: Sensor 3 high temp!</li>
+        <!-- Analytics -->
+        <section class="card analytics-card">
+            <h2>Analytics</h2>
+            <div class="analytics-content">
+                <p>Data transmission rate is stable at <strong>1.2 MB/s</strong>. No network bottlenecks detected in the last 24 hours.</p>
+            </div>
+        </section>
+
+        <!-- Alerts -->
+        <section class="card alerts-card">
+            <h2>Recent Alerts</h2>
+            <ul class="alert-list">
+                <li class="alert-item"><strong>Warning:</strong> Sensor 3 temperature exceeded 45°C.</li>
+                <li class="alert-item"><strong>Info:</strong> Sensor 2 went offline at 12:00 PM.</li>
             </ul>
         </section>
-    </div>
+    </main>
 </body>
 </html>
